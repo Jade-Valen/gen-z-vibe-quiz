@@ -1,1375 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Vibe Check ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Check 🎀</title>
 
 <style>
+*{box-sizing:border-box}
 
-/* =========================
-   BASIC SETUP
-========================= */
-
-* {
-    box-sizing: border-box;
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd6e8,#e4ddff);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+color:#30283d;
 }
 
-body {
-
-    margin: 0;
-
-    min-height: 100vh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background:
-        radial-gradient(circle at top left, #ffd6e8, transparent 35%),
-        radial-gradient(circle at bottom right, #d7d2ff, transparent 35%),
-        linear-gradient(135deg, #ffe8f1, #e9e5ff);
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    color: #292438;
-
-    padding: 20px;
-
+.card{
+width:100%;
+max-width:450px;
+background:rgba(255,255,255,.9);
+border-radius:28px;
+padding:28px 20px;
+text-align:center;
+box-shadow:0 15px 40px rgba(60,40,80,.18);
 }
 
+h1{font-size:28px;margin:10px 0}
+p{line-height:1.5}
 
-/* =========================
-   MAIN CARD
-========================= */
-
-.container {
-
-    width: 100%;
-
-    max-width: 470px;
-
-    background:
-        rgba(255,255,255,0.78);
-
-    backdrop-filter: blur(15px);
-
-    -webkit-backdrop-filter: blur(15px);
-
-    border-radius: 30px;
-
-    padding: 28px 22px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 60px rgba(70,50,100,0.18);
-
-    animation:
-        appear 0.5s ease;
-
+button{
+border:0;
+border-radius:22px;
+padding:13px 18px;
+margin:7px;
+font-size:15px;
+background:#30283d;
+color:white;
+cursor:pointer;
 }
 
-
-@keyframes appear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(0.98);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
+.option{
+display:block;
+width:100%;
+text-align:left;
+background:white;
+color:#30283d;
+border:1px solid #e4dcec;
 }
 
-
-/* =========================
-   TEXT
-========================= */
-
-h1 {
-
-    font-size: 28px;
-
-    margin:
-        8px 0 14px;
-
+input{
+width:90%;
+padding:13px;
+border-radius:18px;
+border:1px solid #ddd;
+font-size:16px;
+text-align:center;
 }
 
+.emoji{font-size:55px}
 
-h2 {
-
-    font-size: 21px;
-
-    margin:
-        12px 0;
-
+.fact{
+background:#fff0f7;
+padding:16px;
+border-radius:20px;
+margin:18px 0;
 }
-
-
-p {
-
-    font-size: 16px;
-
-    line-height: 1.55;
-
-}
-
-
-.small {
-
-    font-size: 12px;
-
-    opacity: 0.55;
-
-}
-
-
-/* =========================
-   EMOJIS
-========================= */
-
-.big-emoji {
-
-    font-size: 58px;
-
-    margin-bottom: 8px;
-
-}
-
-
-.mini-emoji {
-
-    font-size: 30px;
-
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
-
-button {
-
-    border: none;
-
-    border-radius: 25px;
-
-    padding:
-        13px 19px;
-
-    margin: 6px;
-
-    font-size: 15px;
-
-    font-weight: 500;
-
-    background: #292438;
-
-    color: white;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-
-}
-
-
-button:hover {
-
-    transform:
-        translateY(-2px)
-        scale(1.02);
-
-    box-shadow:
-        0 7px 18px
-        rgba(50,40,70,0.15);
-
-}
-
-
-button:active {
-
-    transform:
-        scale(0.96);
-
-}
-
-
-/* =========================
-   OPTION BUTTONS
-========================= */
-
-.option {
-
-    display: block;
-
-    width: 100%;
-
-    background: white;
-
-    color: #292438;
-
-    border:
-        1px solid #e5deec;
-
-    text-align: left;
-
-    padding: 15px;
-
-}
-
-
-.option:hover {
-
-    background:
-        #faf3ff;
-
-}
-
-
-/* =========================
-   INPUT
-========================= */
-
-input {
-
-    width: 90%;
-
-    padding: 14px 16px;
-
-    border-radius: 18px;
-
-    border:
-        1px solid #ddd5e8;
-
-    outline: none;
-
-    font-size: 16px;
-
-    text-align: center;
-
-    margin: 12px 0;
-
-    background:
-        rgba(255,255,255,0.9);
-
-}
-
-
-input:focus {
-
-    border-color:
-        #a995c7;
-
-}
-
-
-/* =========================
-   PROGRESS BAR
-========================= */
-
-.progress {
-
-    height: 7px;
-
-    background:
-        #eee8f5;
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    margin-bottom: 20px;
-
-}
-
-
-.progress-bar {
-
-    height: 100%;
-
-    background:
-        #292438;
-
-    border-radius: 10px;
-
-    transition:
-        width 0.4s ease;
-
-}
-
-
-/* =========================
-   FACT BOX
-========================= */
-
-.fact-box {
-
-    background:
-        rgba(255,255,255,0.72);
-
-    border-radius: 20px;
-
-    padding: 18px;
-
-    margin:
-        18px 0;
-
-    font-size: 16px;
-
-    line-height: 1.5;
-
-}
-
-
-/* =========================
-   RESULT
-========================= */
-
-.result {
-
-    background:
-        rgba(255,255,255,0.65);
-
-    border-radius: 22px;
-
-    padding: 18px;
-
-    text-align: left;
-
-    margin-top: 18px;
-
-}
-
-
-.result p {
-
-    margin:
-        9px 0;
-
-}
-
-
-.result strong {
-
-    font-weight: 700;
-
-}
-
-
-/* =========================
-   FINAL MESSAGE
-========================= */
-
-.final-message {
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,220,235,0.7),
-            rgba(225,220,255,0.7)
-        );
-
-    border-radius: 22px;
-
-    padding: 18px;
-
-    margin-top: 18px;
-
-}
-
-
-/* =========================
-   FLOATING DECORATION
-========================= */
-
-.sparkle {
-
-    position: fixed;
-
-    font-size: 18px;
-
-    opacity: 0.5;
-
-    animation:
-        float 4s infinite ease-in-out;
-
-    pointer-events: none;
-
-}
-
-
-.sparkle.one {
-
-    top: 8%;
-
-    left: 8%;
-
-}
-
-
-.sparkle.two {
-
-    top: 18%;
-
-    right: 8%;
-
-    animation-delay: 1s;
-
-}
-
-
-.sparkle.three {
-
-    bottom: 12%;
-
-    left: 7%;
-
-    animation-delay: 2s;
-
-}
-
-
-.sparkle.four {
-
-    bottom: 8%;
-
-    right: 10%;
-
-    animation-delay: 1.5s;
-
-}
-
-
-@keyframes float {
-
-    0%,100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-12px);
-
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<div class="sparkle one">✦</div>
-
-<div class="sparkle two">♡</div>
-
-<div class="sparkle three">✧</div>
-
-<div class="sparkle four">⋆</div>
-
-
-<div class="container" id="app"></div>
-
+<div class="card" id="app"></div>
 
 <script>
+const app=document.getElementById("app");
+let name="";
 
-/* ==================================================
-   VARIABLES
-================================================== */
-
-let nickname = "";
-
-let vibe = "";
-
-let mentalState = "";
-
-let battery = "";
-
-let support = "";
-
-let power = "";
-
-let zombie = "";
-
-let redFlag = "";
-
-let npc = "";
-
-let delulu = "";
-
-let baddie = "";
-
-let anime = "";
-
-let animeDeath = "";
-
-let cutie = "";
-
-let randomFact = "";
-
-
-/* ==================================================
-   QUESTION COUNTER
-================================================== */
-
-let questionNumber = 0;
-
-const totalQuestions = 14;
-
-
-/* ==================================================
-   MAIN APP
-================================================== */
-
-const app =
-    document.getElementById("app");
-
-
-/* ==================================================
-   SHOW SCREEN
-================================================== */
-
-function show(content) {
-
-    let percentage =
-        Math.min(
-            (questionNumber / totalQuestions) * 100,
-            100
-        );
-
-
-    app.innerHTML = `
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                style="width:${percentage}%">
-            </div>
-
-        </div>
-
-        ${content}
-
-    `;
-
-
-    window.scrollTo(0,0);
-
+function start(){
+app.innerHTML=`
+<div class="emoji">🎀</div>
+<h1>Vibe Check ✨</h1>
+<p>Welcome to the most scientifically questionable quiz on the internet.</p>
+<p><b>Are you ready?</b></p>
+<button onclick="namePage()">YES 😭</button>
+<button onclick="namePage()">Obviously 😌</button>
+`;
 }
 
-
-/* ==================================================
-   START
-================================================== */
-
-function start() {
-
-    questionNumber = 0;
-
-    show(`
-
-        <div class="big-emoji">
-            👀
-        </div>
-
-        <h1>
-            Hey. You.
-        </h1>
-
-        <p>
-            Yeah, you scrolling on your phone.
-        </p>
-
-        <p>
-            I have a very important question.
-        </p>
-
-        <h2>
-            Are you tired?
-        </h2>
-
-        <button
-            onclick="tiredYes()">
-            Unfortunately, yes 😭
-        </button>
-
-        <button
-            onclick="tiredNo()">
-            No, I'm thriving 😌
-        </button>
-
-        <p class="small">
-            Warning: this quiz has absolutely
-            no scientific value.
-        </p>
-
-    `);
-
+function namePage(){
+app.innerHTML=`
+<div class="emoji">🏷️</div>
+<h1>First things first...</h1>
+<p>What should I call you?</p>
+<input id="n" maxlength="20" placeholder="Your nickname">
+<br>
+<button onclick="saveName()">That's me ✨</button>
+`;
 }
 
-
-/* ==================================================
-   TIRED YES
-================================================== */
-
-function tiredYes() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🫠
-        </div>
-
-        <h1>
-            Yeah... I could tell.
-        </h1>
-
-        <p>
-            Anyway, let's investigate your
-            extremely interesting existence.
-        </p>
-
-        <button
-            onclick="chooseVibe()">
-            Continue → 👀
-        </button>
-
-    `);
-
+function saveName(){
+name=document.getElementById("n").value.trim();
+if(!name){
+alert("Give me a nickname first 😭");
+return;
+}
+q1();
 }
 
-
-/* ==================================================
-   TIRED NO
-================================================== */
-
-function tiredNo() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🤨
-        </div>
-
-        <h1>
-            Interesting.
-        </h1>
-
-        <p>
-            You voluntarily opened a website
-            made for tired people...
-        </p>
-
-        <p>
-            ...and you're claiming you're
-            NOT tired?
-        </p>
-
-        <button
-            onclick="chooseVibe()">
-            Suspicious. Continue 😭
-        </button>
-
-    `);
-
+function q1(){
+app.innerHTML=`
+<div class="emoji">🧠</div>
+<h1>${name}, brain status?</h1>
+<button class="option" onclick="q2('Loading... 🧠')">🧠 Loading...</button>
+<button class="option" onclick="q2('Absolutely cooked 🫠')">🫠 Absolutely cooked</button>
+<button class="option" onclick="q2('Surprisingly functional ✨')">✨ Surprisingly functional</button>
+<button class="option" onclick="q2('No thoughts, just vibes 🐒')">🐒 No thoughts, just vibes</button>
+`;
 }
 
-
-/* ==================================================
-   VIBE
-================================================== */
-
-function chooseVibe() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🌅🌙
-        </div>
-
-        <h1>
-            Choose your vibe.
-        </h1>
-
-        <p>
-            What's your natural habitat?
-        </p>
-
-        <button
-            class="option"
-            onclick="
-            setVibe('Morning Bird 🌅')">
-
-            🌅 <strong>Morning Bird</strong>
-
-            <br>
-
-            <span class="small">
-                Awake before everyone else
-                for absolutely no reason.
-            </span>
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setVibe('Night Owl 🌙')">
-
-            🌙 <strong>Night Owl</strong>
-
-            <br>
-
-            <span class="small">
-                Sleep is apparently optional.
-            </span>
-
-        </button>
-
-    `);
-
+function q2(brain){
+app.innerHTML=`
+<div class="emoji">🔋</div>
+<h1>Current battery?</h1>
+<button class="option" onclick="q3('${brain}','1–10% 🥔')">🥔 1–10% — basically a potato</button>
+<button class="option" onclick="q3('${brain}','11–30% 😭')">😭 11–30% — surviving</button>
+<button class="option" onclick="q3('${brain}','31–60% 😌')">😌 31–60% — we're okay</button>
+<button class="option" onclick="q3('${brain}','61–100% ⚡')">⚡ 61–100% — unstoppable</button>
+`;
 }
 
-
-function setVibe(choice) {
-
-    vibe = choice;
-
-    chooseNickname();
-
+function q3(brain,battery){
+app.innerHTML=`
+<div class="emoji">🚩</div>
+<h1>Pick your red flag.</h1>
+<button class="option" onclick="q4('${brain}','${battery}','Replying later and disappearing 📱')">📱 Replying later and disappearing</button>
+<button class="option" onclick="q4('${brain}','${battery}','Studying one day before the exam 📚')">📚 Studying one day before the exam</button>
+<button class="option" onclick="q4('${brain}','${battery}','Five more minutes = 45 minutes 🛏️')">🛏️ Five more minutes = 45 minutes</button>
+<button class="option" onclick="q4('${brain}','${battery}','Adding everything to my cart 🛒')">🛒 Adding everything to my cart</button>
+`;
 }
 
-
-/* ==================================================
-   NICKNAME
-================================================== */
-
-function chooseNickname() {
-
-    show(`
-
-        <div class="big-emoji">
-            🏷️
-        </div>
-
-        <h1>
-            Choose your nickname.
-        </h1>
-
-        <p>
-            What should I call you during
-            this extremely important investigation?
-        </p>
-
-        <input
-            id="nicknameInput"
-            type="text"
-            maxlength="20"
-            placeholder="Type your nickname here..."
-        >
-
-        <br>
-
-        <button
-            onclick="saveNickname()">
-
-            That's me → ✨
-
-        </button>
-
-    `);
-
+function q4(brain,battery,flag){
+app.innerHTML=`
+<div class="emoji">🎌</div>
+<h1>Anime energy?</h1>
+<button class="option" onclick="q5('${brain}','${battery}','${flag}','Main character ⚔️')">⚔️ Main character</button>
+<button class="option" onclick="q5('${brain}','${battery}','${flag}','Mysterious villain 🖤')">🖤 Mysterious villain</button>
+<button class="option" onclick="q5('${brain}','${battery}','${flag}','Comic relief 🤣')">🤣 Comic relief</button>
+<button class="option" onclick="q5('${brain}','${battery}','${flag}','Overpowered side character 👑')">👑 Overpowered side character</button>
+`;
 }
 
+function q5(brain,battery,flag,anime){
+const facts=[
+"🐙 Octopuses have three hearts.",
+"🦩 A group of flamingos is called a flamboyance.",
+"🐧 Penguins sometimes give pebbles as gifts.",
+"🦋 Butterflies taste using sensors on their feet.",
+"🦈 Sharks existed before trees."
+];
 
-function saveNickname() {
+const fact=facts[Math.floor(Math.random()*facts.length)];
 
-    let input =
-        document
-        .getElementById("nicknameInput")
-        .value
-        .trim();
-
-
-    if(input === "") {
-
-        alert(
-            "You need a nickname first 😭"
-        );
-
-        return;
-
-    }
-
-
-    nickname = input;
-
-    mentalQuestion();
-
+app.innerHTML=`
+<div class="emoji">🎲</div>
+<h1>Random useless knowledge</h1>
+<div class="fact">${fact}</div>
+<p>Okay ${name}, one final vibe check.</p>
+<button onclick="result('${brain}','${battery}','${flag}','${anime}')">Show my results ✨</button>
+`;
 }
 
+function result(brain,battery,flag,anime){
+app.innerHTML=`
+<div class="emoji">✨</div>
+<h1>${name}'s Vibe Report</h1>
 
-/* ==================================================
-   MENTAL STATE
-================================================== */
+<p>🧠 <b>Brain:</b> ${brain}</p>
+<p>🔋 <b>Battery:</b> ${battery}</p>
+<p>🚩 <b>Red flag:</b> ${flag}</p>
+<p>🎌 <b>Anime energy:</b> ${anime}</p>
 
-function mentalQuestion() {
+<div class="fact">
+<b>Official diagnosis:</b><br><br>
+You are approximately 87% vibes, 10% chaos and 3% pretending to know what's going on. 😭
+</div>
 
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🧠
-        </div>
-
-        <h1>
-            ${nickname}, choose your brain status.
-        </h1>
-
-        <button
-            class="option"
-            onclick="
-            setMental('Loading... 🧠')">
-
-            🧠 Loading...
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setMental('Absolutely cooked 🫠')">
-
-            🫠 Absolutely cooked
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setMental('Surprisingly functional ✨')">
-
-            ✨ Surprisingly functional
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setMental('No thoughts, just vibes 🐒')">
-
-            🐒 No thoughts, just vibes
-
-        </button>
-
-    `);
-
+<button onclick="feedback()">Continue → 💌</button>
+`;
 }
 
+function feedback(){
+app.innerHTML=`
+<div class="emoji">💌</div>
+<h1>Be honest...</h1>
+<p>How was the quiz?</p>
 
-function setMental(choice) {
-
-    mentalState = choice;
-
-    batteryQuestion();
-
+<button class="option" onclick="thanks('Loved it 💗')">💗 Loved it</button>
+<button class="option" onclick="thanks('It was cute 🎀')">🎀 It was cute</button>
+<button class="option" onclick="thanks('Chaotic but fun 😭')">😭 Chaotic but fun</button>
+<button class="option" onclick="thanks('It was okay 😐')">😐 It was okay</button>
+`;
 }
 
-
-/* ==================================================
-   BATTERY
-================================================== */
-
-function batteryQuestion() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🔋
-        </div>
-
-        <h1>
-            Current battery percentage?
-        </h1>
-
-        <button
-            class="option"
-            onclick="
-            setBattery('1–10% 🥔')">
-
-            🔋 1–10% —
-            Basically a potato
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setBattery('11–30% 😭')">
-
-            🔋 11–30% —
-            Functioning against my will
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setBattery('31–60% 😌')">
-
-            🔋 31–60% —
-            We're surviving
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setBattery('61–90% ⚡')">
-
-            🔋 61–90% —
-            Suspiciously productive
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setBattery('91–100% 👑')">
-
-            🔋 91–100% —
-            Who gave me this power?
-
-        </button>
-
-    `);
-
+function thanks(answer){
+app.innerHTML=`
+<div class="emoji">🎀</div>
+<h1>${answer}</h1>
+<p>Thanks for playing, ${name}! ✨</p>
+<p>Come back whenever you're bored.</p>
+<button onclick="start()">🔄 Play again</button>
+`;
 }
 
-
-function setBattery(choice) {
-
-    battery = choice;
-
-    supportQuestion();
-
-}
-
-
-/* ==================================================
-   EMOTIONAL SUPPORT OBJECT
-================================================== */
-
-function supportQuestion() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🧸
-        </div>
-
-        <h1>
-            Pick your emotional-support object.
-        </h1>
-
-        <button
-            class="option"
-            onclick="
-            setSupport('Stuffed toy 🧸')">
-
-            🧸 Stuffed toy
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setSupport('Headphones 🎧')">
-
-            🎧 Headphones
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setSupport('Phone 📱')">
-
-            📱 My phone
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setSupport('Food 🍜')">
-
-            🍜 Food. Obviously.
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setSupport('My bed 🛏️')">
-
-            🛏️ My bed
-
-        </button>
-
-    `);
-
-}
-
-
-function setSupport(choice) {
-
-    support = choice;
-
-    powerQuestion();
-
-}
-
-
-/* ==================================================
-   USELESS SUPERPOWER
-================================================== */
-
-function powerQuestion() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🦸
-        </div>
-
-        <h1>
-            Choose a useless superpower.
-        </h1>
-
-        <p>
-            Choose wisely.
-            It is completely useless.
-        </p>
-
-
-        <button
-            class="option"
-            onclick="
-            setPower('Always find missing socks 🧦')">
-
-            🧦 Always find missing socks
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setPower('Understand pigeons 🐦')">
-
-            🐦 Understand pigeons
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setPower('Know when pizza is nearby 🍕')">
-
-            🍕 Know when pizza is nearby
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setPower('Never lose my phone 📱')">
-
-            📱 Never lose my phone
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setPower('Remember every embarrassing moment 💀')">
-
-            💀 Remember every embarrassing moment
-
-        </button>
-
-    `);
-
-}
-
-
-function setPower(choice) {
-
-    power = choice;
-
-    zombieQuestion();
-
-}
-
-
-/* ==================================================
-   ZOMBIE
-================================================== */
-
-function zombieQuestion() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🧟
-        </div>
-
-        <h1>
-            Zombie apocalypse.
-        </h1>
-
-        <p>
-            Be honest. Are you surviving?
-        </p>
-
-
-        <button
-            class="option"
-            onclick="
-            setZombie('Absolutely. Built different 😎')">
-
-            🗡️ Absolutely.
-            I'm built different.
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setZombie('I'd run. 🏃')">
-
-            🏃 I'd run.
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setZombie('No ❤️')">
-
-            🫠 No ❤️
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setZombie('I'd become the villain 😈')">
-
-            😈 I'd become the villain.
-
-        </button>
-
-    `);
-
-}
-
-
-function setZombie(choice) {
-
-    zombie = choice;
-
-    redFlagQuestion();
-
-}
-
-
-/* ==================================================
-   RED FLAG
-================================================== */
-
-function redFlagQuestion() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🚩
-        </div>
-
-        <h1>
-            Pick your red flag.
-        </h1>
-
-        <button
-            class="option"
-            onclick="
-            setRedFlag(
-            'I say I will reply later and disappear 📱'
-            )">
-
-            📱 "I'll reply later."
-            <br>
-            <span class="small">
-                *disappears for seven business days*
-            </span>
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setRedFlag(
-            'I start studying one day before the exam 📚'
-            )">
-
-            📚 I start studying
-            one day before the exam.
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setRedFlag(
-            'I add things to my cart and never buy them 🛒'
-            )">
-
-            🛒 Add to cart.
-            Never purchase.
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setRedFlag(
-            'I stalk profiles and accidentally like things 👀'
-            )">
-
-            👀 Profile stalking
-            gone horribly wrong.
-
-        </button>
-
-
-        <button
-            class="option"
-            onclick="
-            setRedFlag(
-            'Five more minutes means forty-five minutes 🛏️'
-            )">
-
-            🛏️ "Five more minutes."
-
-        </button>
-
-    `);
-
-}
-
-
-function setRedFlag(choice) {
-
-    redFlag = choice;
-
-    npcQuestion();
-
-}
-
-
-/* ==================================================
-   NPC DIALOGUE
-================================================== */
-
-function npcQuestion() {
-
-    questionNumber++;
-
-    show(`
-
-        <div class="big-emoji">
-            🎭
-        </div>
-
-        <h1>
-            Choose your NPC dialogue.
-        </h1>
-
-        <button
-            class="option"
-           
-           
+start();
+</script>
+
+</body>
+</html>
